@@ -52,15 +52,15 @@ fun Application.configureHTTP() {
         includeSubDomains = true
     }
     install(HttpsRedirect) {
-            // The port to redirect to. By default 443, the default HTTPS port.
-            sslPort = 443
-            // 301 Moved Permanently, or 302 Found redirect.
-            permanentRedirect = true
-        }
+        // The port to redirect to. By default 443, the default HTTPS port.
+        sslPort = 443
+        // 301 Moved Permanently, or 302 Found redirect.
+        permanentRedirect = true
+    }
     install(PartialContent) {
-            // Maximum number of ranges that will be accepted from a HTTP request.
-            // If the HTTP request specifies more ranges, they will all be merged into a single range.
-            maxRangeCount = 10
-        }
+        // Maximum number of ranges that will be accepted from a HTTP request.
+        // If the HTTP request specifies more ranges, they will all be merged into a single range.
+        maxRangeCount = 10
+    }
 
 }

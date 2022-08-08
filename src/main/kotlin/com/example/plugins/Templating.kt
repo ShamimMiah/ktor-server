@@ -25,8 +25,8 @@ import io.ktor.server.request.*
 import io.ktor.server.routing.*
 
 fun Application.configureTemplating() {
-    
-    
+
+
     install(FreeMarker) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
@@ -74,7 +74,7 @@ fun Application.configureTemplating() {
                 }
             }
         }
-        
+
         get("/html-css-dsl") {
             call.respondHtml {
                 head {
@@ -106,8 +106,9 @@ fun Application.configureTemplating() {
         }
     }
 }
+
 suspend inline fun ApplicationCall.respondCss(builder: CSSBuilder.() -> Unit) {
-   this.respondText(CSSBuilder().apply(builder).toString(), ContentType.Text.CSS)
+    this.respondText(CSSBuilder().apply(builder).toString(), ContentType.Text.CSS)
 }
 
 data class IndexData(val items: List<Int>)

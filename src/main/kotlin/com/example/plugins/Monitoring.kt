@@ -24,13 +24,13 @@ fun Application.configureMonitoring() {
             callId.isNotEmpty()
         }
     }
-    
+
     val appMicrometerRegistry = PrometheusMeterRegistry(PrometheusConfig.DEFAULT)
-    
-        install(MicrometerMetrics) {
-            registry = appMicrometerRegistry
-            // ...
-        }
+
+    install(MicrometerMetrics) {
+        registry = appMicrometerRegistry
+        // ...
+    }
 
     routing {
         get("/metrics-micrometer") {

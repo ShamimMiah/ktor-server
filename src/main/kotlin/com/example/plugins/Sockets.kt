@@ -26,8 +26,8 @@ fun Application.configureSockets() {
         maxFrameSize = Long.MAX_VALUE
         masking = false
     }
-    
-    
+
+
 
     routing {
         webSocket("/ws") { // websocketSession
@@ -43,6 +43,7 @@ fun Application.configureSockets() {
         }
     }
 }
+
 /**
  * Two mains are provided, you must first start EchoApp.Server, and then EchoApp.Client.
  * You can also start EchoApp.Server and then use a telnet client to connect to the echo server.
@@ -114,7 +115,8 @@ object TlsRawSocket {
     fun main(args: Array<String>) {
         runBlocking {
             val selectorManager = ActorSelectorManager(Dispatchers.IO)
-            val socket = aSocket(selectorManager).tcp().connect("www.google.com", port = 443).tls(coroutineContext = coroutineContext)
+            val socket = aSocket(selectorManager).tcp().connect("www.google.com", port = 443)
+                .tls(coroutineContext = coroutineContext)
             val write = socket.openWriteChannel()
             val EOL = "\r\n"
             write.writeStringUtf8("GET / HTTP/1.1${EOL}Host: www.google.com${EOL}Connection: close${EOL}${EOL}")
